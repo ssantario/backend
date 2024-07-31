@@ -27,7 +27,7 @@ exports.login = async function login(req, res) {
 
 exports.getManager = async function getManager(req,res){
   try {
-    const { name } = req.body;
+    const { name } = req.params;
     const response = await pg.query('SELECT * FROM manager WHERE name = $1', [name]);
 
     if (response.rows.length === 0) throw new error ("Data not found");

@@ -4,7 +4,10 @@ exports.addEmployee = async function addEmployee(req, res) {
   // Insert kode ADD di sini
   try {
     const { name, gender, division, salary } = req.body;
-    const response = await pg.query('INSERT INTO employee (name, division, salary) VALUES ($1, $2, $3, $4) RETURNING *', [name, gender, division, salary]);
+    const response = await pg.query(
+      'INSERT INTO employee (name, gender, division, salary) VALUES ($1, $2, $3, $4) RETURNING *', 
+      [name, gender, division, salary]
+    );
 
     res.status(201).json(response.rows[0]);
   } catch (error) {
