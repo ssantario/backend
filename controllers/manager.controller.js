@@ -31,6 +31,7 @@ exports.getManager = async function getManager(req,res){
     const response = await pg.query('SELECT * FROM manager WHERE name = $1', [name]);
 
     if (response.rows.length === 0) throw new error ("Data not found");
+    
     const managerInfo = response.rows[0];
     res.status(200).json({ name: managerInfo.name });
     }catch (error) {
