@@ -6,7 +6,7 @@ exports.register = async function register(req, res) {
     const { name, password } = req.body;
     const response = await pg.query('INSERT INTO manager (name, password) VALUES ($1, $2) RETURNING *', [name, password]);
 
-    req.status(201).json(response.rows[0]);
+    res.status(200).json(response.rows[0]);
   } catch (error) {
     res.status(500).json(error);
   }
