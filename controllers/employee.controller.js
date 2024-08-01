@@ -40,3 +40,20 @@ exports.getOneEmployee = async function getOneEmployee(req, res) {
     res.status(500).json(error);
   }
 };
+
+exports.deleteEmployee = async function deleteEmployee(req, res) {
+
+  try {
+    const { id } = req.params;
+    const response = await pg.query('DELETE FROM employee WHERE id = $1 RETURNING *', [id]);
+
+    if (response.rows.length === 0) {
+      return res.status(404).json({ message: 'Employee not found' });
+    }
+
+    res.status(200).json({ message: 'Employee deleted successfully', employee: response.rows[0] });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
