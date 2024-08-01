@@ -57,3 +57,21 @@ exports.deleteEmployee = async function deleteEmployee(req, res) {
   }
 };
 
+exports.updateEmployee = async function updateEmployee(req, res) {
+  try {
+    const { id } = req.params;
+    const { name, gender, division, salary } = req.body;
+    const response = await pg.query(
+      'UPDATE employee SET name = $1, gender = $2, division = $3, salary = $4 WHERE id = $5 RETURNING *', 
+      [name, gender, division, salary, id]
+    );
+
+    if (response.rows.length === 0) {
+      return res.status(404).json({ message: 'Employee not found' });
+    }
+
+    res.status(200).json(response.rows[0]);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
