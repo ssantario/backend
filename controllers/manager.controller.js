@@ -1,5 +1,6 @@
 const pg = require("../utils/connect");
 
+// register manager
 exports.register = async function register(req, res) {
   // Insert kode REGISTER di sini
   try {
@@ -12,6 +13,7 @@ exports.register = async function register(req, res) {
   }
 };
 
+// login manager
 exports.login = async function login(req, res) {
   // Insert kode LOGIN di sini
   try {
@@ -25,6 +27,7 @@ exports.login = async function login(req, res) {
   }
 };
 
+// get nama manager
 exports.getManager = async function getManager(req,res){
   try {
     const { name } = req.params;

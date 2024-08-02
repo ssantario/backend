@@ -1,5 +1,6 @@
 const pg = require("../utils/connect");
 
+// add employee 
 exports.addEmployee = async function addEmployee(req, res) {
   // Insert kode ADD di sini
   try {
@@ -15,6 +16,7 @@ exports.addEmployee = async function addEmployee(req, res) {
   }
 };
 
+// fetch semua employee
 exports.getEmployee = async function getEmployee(req, res) {
   // Insert kode GET di sini
   try {
@@ -25,6 +27,7 @@ exports.getEmployee = async function getEmployee(req, res) {
   }
 };
 
+// fetch satu employe berdasarkan id
 exports.getOneEmployee = async function getOneEmployee(req, res) {
   // Insert kode GET di sini
   try {
@@ -41,6 +44,7 @@ exports.getOneEmployee = async function getOneEmployee(req, res) {
   }
 };
 
+// delete employee berdasarkan id
 exports.deleteEmployee = async function deleteEmployee(req, res) {
 
   try {
@@ -57,6 +61,7 @@ exports.deleteEmployee = async function deleteEmployee(req, res) {
   }
 };
 
+// update employee detail 
 exports.updateEmployee = async function updateEmployee(req, res) {
   try {
     const { id } = req.params;
